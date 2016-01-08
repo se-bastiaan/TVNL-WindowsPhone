@@ -1,5 +1,9 @@
-TVNL for Windows Phone 8.1 (NPO application)
+TVNL for Windows Phone 8.1
 =========================
+
+This is the source code of the ['NPO' Windows Phone application](https://www.microsoft.com/nl-nl/store/apps/npo/9wzdncrdf5l5).
+
+The application was first introduced in January 2014 for Windows Phone 7 and Windows Phone 8. When Microsoft released Windows Phone 8.1 I partially rewrote it, this repository contains the code of that rewrite. I decided that there was no reason for not open sourcing this code for anyone who is interested in looking into it.
 
 ## License
 
