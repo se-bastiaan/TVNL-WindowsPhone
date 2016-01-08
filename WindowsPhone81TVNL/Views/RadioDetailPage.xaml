@@ -1,0 +1,114 @@
+﻿<Page
+    x:Class="WindowsPhone81TVNL.Views.RadioDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsPhone81TVNL.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource BackgroundColorBrush}">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Stretch" Margin="19,0,0,0">
+            <Image x:Name="Logo" HorizontalAlignment="Left" Source="/Assets/NPO-logo.png" Height="35" Margin="0,0,0,0" />
+            <TextBlock Text="{Binding Item.Name}" Foreground="{StaticResource AccentColorBrush}" Margin="-4,3,0,3" Padding="0" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="{StaticResource PivotHeaderItemFontSize}" />
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            <Pivot HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{StaticResource SecondColorBrush}" Margin="0,-10,0,0">
+                <Pivot.Title>
+                    <Grid></Grid>
+                </Pivot.Title>
+                <PivotItem Header="nu">
+                    <ScrollViewer Margin="19,0" HorizontalScrollMode="Disabled">
+                        <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,12">
+                            <Grid VerticalAlignment="Top" Background="{StaticResource SecondBackgroundColorBrush}" HorizontalAlignment="Stretch">
+                                <TextBlock Height="30" HorizontalAlignment="Right" Margin="0,10,12,0" Foreground="{StaticResource BackgroundColorBrush}" Text="{Binding Broadcast.BroadcasterName}" VerticalAlignment="Top" FontWeight="Bold" Style="{StaticResource BodyTextBlockStyle}" />
+                                <Image Height="100" HorizontalAlignment="Left" Margin="12,12,0,12" VerticalAlignment="Top" Width="133" Source="{Binding Broadcast.ProgrammeImage}" />
+                                <TextBlock Height="34" HorizontalAlignment="Left" Margin="157,12,0,0" Foreground="{StaticResource BackgroundColorBrush}" Text="{Binding Broadcast.BroadcastTimes}" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" />
+                                <TextBlock Margin="157,42,12,0" Height="34" Foreground="{StaticResource BackgroundColorBrush}" Text="{Binding Broadcast.ProgrammeName}" TextTrimming="WordEllipsis" FontWeight="Bold" FontSize="24" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" />
+                                <TextBlock Margin="157,76,12,0" Height="30" Foreground="{StaticResource BackgroundColorBrush}" Text="{Binding Broadcast.Presenters}" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}"/>
+                                <TextBlock Margin="12,120,12,12" HorizontalAlignment="Stretch" Foreground="{StaticResource BackgroundColorBrush}" Text="{Binding OnAir.SongData}" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" />
+                            </Grid>
+                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Margin="12,18,0,0" Name="aboutBroadcastTitle" Text="" FontSize="28" LineHeight="42" FontFamily="Segoe WP Semibold" Style="{StaticResource BodyTextBlockStyle}">Over <Run Text="{Binding Broadcast.ProgrammeName}" /></TextBlock>
+                            <TextBlock HorizontalAlignment="Stretch" Margin="12" Name="aboutBroadcast" Text="{Binding Broadcast.ProgrammeDescription}" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </PivotItem>
+                <PivotItem Header="programma">
+                    <Grid>
+                        <ListView x:Name="ProgrammesListSelector" Margin="19,0" ItemsSource="{Binding Programme}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,12" Height="85">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0" VerticalAlignment="Center" Width="80" Height="80">
+                                            <BitmapIcon Grid.Column="0" Grid.Row="0"
+                                                UriSource="/Resources/NPO.png" 
+                                                Foreground="{StaticResource IconColorBrush}"
+                                                Opacity="0.5"
+                                                Height="Auto"
+                                                Width="Auto"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Margin="15" />
+                                            <Image Grid.Column="0"
+                                           Grid.Row="0"
+                                           Stretch="UniformToFill"
+                                           Source="{Binding Image}"
+                                           Height="Auto"
+                                           Width="Auto"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                        </Grid>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Text="{Binding Title}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="Wrap"
+                                               MaxHeight="80"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               LineHeight="28"
+                                               Margin="12,0,12,0"
+                                               FontSize="24" />
+                                            <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Opacity="0.7"
+                                               Text="{Binding DateTime}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="NoWrap"
+                                               MaxHeight="30"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               FontSize="16"
+                                               Margin="12,0,12,0" />
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="CommandBar" Background="{StaticResource AppBarBackgroundThemeBrush}" Foreground="{StaticResource AppBarItemForegroundThemeBrush}">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="AudioButton" Label="luisteren" Icon="Play" Click="PlayAudio" />
+                <AppBarButton x:Name="WebcamButton" Label="webcam" Icon="Video" Click="PlayWebcam" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

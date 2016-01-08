@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="WindowsPhone81TVNL.Views.LiveDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsPhone81TVNL.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource BackgroundColorBrush}">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Stretch" Margin="19,0,0,0">
+            <Image x:Name="Logo" HorizontalAlignment="Left" Source="/Assets/NPO-logo.png" Height="35" Margin="0,0,0,0" />
+            <TextBlock Text="{Binding Item.Name}" Foreground="{StaticResource AccentColorBrush}" Margin="-4,3,0,3" Padding="0" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="{StaticResource PivotHeaderItemFontSize}" />
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            <Pivot HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{StaticResource SecondColorBrush}" Margin="0,-10,0,0">
+                <PivotItem Header="gids">
+                    <Grid>
+                        <ListView Margin="19,0" ItemsSource="{Binding Item.TimeGuide}" SelectionMode="None">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,12" Height="60" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="96" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Grid.RowSpan="2" Foreground="{StaticResource AccentColorBrush}" Text="{Binding TimeText}" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap" MaxHeight="60" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,12,0" TextTrimming="WordEllipsis" FontFamily="Segoe WP" />
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Foreground="{StaticResource SecondColorBrush}" Text="{Binding Episode.Title}" VerticalAlignment="Bottom" HorizontalAlignment="Left" TextWrapping="NoWrap" MaxHeight="60" Style="{StaticResource ListViewItemTextBlockStyle}" TextTrimming="WordEllipsis" />
+                                            <TextBlock Foreground="{StaticResource SecondColorBrush}" Opacity="0.7" Text="{Binding DurationText}" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="NoWrap" MaxHeight="30" Style="{StaticResource ListViewItemTextBlockStyle}" TextTrimming="WordEllipsis" FontSize="18" />
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                            <ListView.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="34" FontFamily="Segoe WP" Style="{StaticResource GroupHeaderTextBlockStyle}" Margin="12,0,12,12" Text="{Binding Key}" Foreground="{StaticResource AccentColorBrush}" />
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                </GroupStyle>
+                            </ListView.GroupStyle>
+                        </ListView>
+                    </Grid>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="CommandBar" Background="{StaticResource AppBarBackgroundThemeBrush}" Foreground="{StaticResource AppBarItemForegroundThemeBrush}">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="streamen" Icon="Play" Click="PlayButton" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

@@ -1,0 +1,83 @@
+﻿<Application
+    x:Class="WindowsPhone81TVNL.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:WindowsPhone81TVNL.Converters"
+    xmlns:helpers="using:WindowsPhone81TVNL.Helpers">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Dark">
+                    <Color x:Key="AccentColor">#FFFF6D00</Color>
+                    <Color x:Key="SecondColor">#FFFEFEFE</Color>
+                    <Color x:Key="BackgroundColor">#FF3C3C3C</Color>
+                    <Color x:Key="SecondBackgroundColor">#FFFEFEFE</Color>
+                    <Color x:Key="StatusBarForegroundColor">#FFFEFEFE</Color>
+                    <Color x:Key="StatusBarBackgroundColor">#FFFF6D00</Color>
+                    <SolidColorBrush x:Key="IconColorBrush"
+                                     Color="#FFFFFFFF" />
+                    <SolidColorBrush x:Key="BackgroundColorBrush"
+                                     Color="{StaticResource BackgroundColor}" />
+                    <SolidColorBrush x:Key="AccentColorBrush"
+                                     Color="{StaticResource AccentColor}" />
+                    <SolidColorBrush x:Key="PhoneAccentBrush"
+                                     Color="{StaticResource AccentColor}" />
+                    <SolidColorBrush x:Key="SecondColorBrush"
+                                     Color="{StaticResource SecondColor}" />
+                    <SolidColorBrush x:Key="SecondBackgroundColorBrush"
+                                     Color="{StaticResource SecondBackgroundColor}" />
+                    <SolidColorBrush x:Key="SolidColorBrush"
+                                     Color="#FF000000" />
+                    <SolidColorBrush x:Key="PivotHeaderForegroundSelectedBrush" Color="#FFFFFFFF" />
+                    <SolidColorBrush x:Key="PivotHeaderForegroundUnselectedBrush"
+                                     Color="#55FFFFFF" />
+                    <SolidColorBrush x:Key="AppBarItemForegroundThemeBrush" Color="{StaticResource StatusBarForegroundColor}" />
+                    <SolidColorBrush x:Key="AppBarItemDisabledForegroundThemeBrush" Color="{StaticResource StatusBarForegroundColor}" />
+                    <SolidColorBrush x:Key="AppBarBackgroundThemeBrush" Color="{StaticResource StatusBarBackgroundColor}" />
+                    <SolidColorBrush x:Key="TextSelectionHighlightColorThemeBrush" Color="{StaticResource AccentColor}"/>
+                    <SolidColorBrush x:Key="ButtonPressedBackgroundThemeBrush" Color="{StaticResource AccentColor}"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <Color x:Key="AccentColor">#FFFF6D00</Color>
+                    <Color x:Key="SecondColor">#FF3C3C3C</Color>
+                    <Color x:Key="BackgroundColor">#FFFEFEFE</Color>
+                    <Color x:Key="SecondBackgroundColor">#FF3C3C3C</Color>
+                    <Color x:Key="StatusBarForegroundColor">#FFFEFEFE</Color>
+                    <Color x:Key="StatusBarBackgroundColor">#FFFF6D00</Color>
+                    <SolidColorBrush x:Key="IconColorBrush"
+                                     Color="#FF3C3C3C" />
+                    <SolidColorBrush x:Key="BackgroundColorBrush"
+                                     Color="{StaticResource BackgroundColor}" />
+                    <SolidColorBrush x:Key="AccentColorBrush"
+                                     Color="{StaticResource AccentColor}" />
+                    <SolidColorBrush x:Key="PhoneAccentBrush"
+                                     Color="{StaticResource AccentColor}" />
+                    <SolidColorBrush x:Key="SecondColorBrush"
+                                     Color="{StaticResource SecondColor}" />
+                    <SolidColorBrush x:Key="SecondBackgroundColorBrush"
+                                     Color="{StaticResource SecondBackgroundColor}" />
+                    <SolidColorBrush x:Key="SolidColorBrush"
+                                     Color="#FF000000" />
+                    <SolidColorBrush x:Key="PivotHeaderForegroundSelectedBrush" Color="#FFFF6D00" />
+                    <SolidColorBrush x:Key="PivotHeaderForegroundUnselectedBrush" Color="#55FF6D00" />
+                    <SolidColorBrush x:Key="AppBarItemForegroundThemeBrush" Color="{StaticResource StatusBarForegroundColor}" />
+                    <SolidColorBrush x:Key="AppBarItemDisabledForegroundThemeBrush" Color="{StaticResource StatusBarForegroundColor}" />
+                    <SolidColorBrush x:Key="AppBarBackgroundThemeBrush" Color="{StaticResource StatusBarBackgroundColor}" />
+                    <SolidColorBrush x:Key="TextSelectionHighlightColorThemeBrush" Color="{StaticResource AccentColor}"/>
+                    <SolidColorBrush x:Key="ButtonPressedBackgroundThemeBrush" Color="{StaticResource AccentColor}"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/ListThemeResourceDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/PivotCorrectionResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:StringCaseConverter x:Key="StringCaseConverter" />
+            <converters:BooleanNegationConverter x:Key="BooleanNegationConverter" />
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+            <helpers:AssemblyInformation x:Key="Assembly" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

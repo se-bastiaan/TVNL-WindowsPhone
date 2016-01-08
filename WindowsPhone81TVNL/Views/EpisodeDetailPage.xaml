@@ -1,0 +1,127 @@
+﻿<Page
+    x:Class="WindowsPhone81TVNL.Views.EpisodeDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsPhone81TVNL.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:q="using:QKit"
+    Background="{ThemeResource BackgroundColorBrush}">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,0" MinHeight="180">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="{StaticResource AccentColorBrush}" IsIndeterminate="True" />
+            <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="UniformToFill" Source="{Binding Image}" />
+            <Rectangle VerticalAlignment="Stretch" Fill="{StaticResource SolidColorBrush}" Opacity="0.5" />
+            <StackPanel Visibility="{Binding IsDataLoaded, Converter={StaticResource BooleanToVisibilityConverter}}" VerticalAlignment="Stretch" Margin="19,0,0,19">
+                <Image x:Name="Logo" HorizontalAlignment="Left" Source="/Resources/NPO.png" Height="35" Margin="0,0,0,0" />
+                <TextBlock Text="{Binding Name}" Foreground="{StaticResource AccentColorBrush}" Margin="-4,3,0,3" Padding="0" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="{StaticResource PivotHeaderItemFontSize}" />
+                <TextBlock Text="{Binding Episode.DateTimeLength}" Foreground="#FFFEFEFE" Margin="0,0,0,0" FontSize="18" Style="{StaticResource BodyTextBlockStyle}" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+                <TextBlock Text="{Binding Broadcasters}" Foreground="#FFFEFEFE" FontSize="18" Style="{StaticResource BodyTextBlockStyle}" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Pivot>
+                <Pivot.Title>
+                    <Grid Height="0" Width="0" />
+                </Pivot.Title>
+                <PivotItem Header="beschrijving">
+                    <ScrollViewer Margin="0,0,0,0">
+                        <StackPanel Margin="19,0">
+                            <TextBlock Text="{Binding Description}" HorizontalAlignment="Stretch" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" />
+                            <TextBlock Text="{Binding Name}" Opacity="0.7" Margin="0,24,0,0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" />
+                            <TextBlock Text="{Binding Genres}" Opacity="0.7" HorizontalAlignment="Stretch" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" />
+                            <GridView SelectionMode="None" ItemsSource="{Binding Images}" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,8,0,0">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding}" Height="40" Width="40" Margin="0,0,5,0" />
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                            </GridView>
+                        </StackPanel>
+                    </ScrollViewer>
+                </PivotItem>
+                <PivotItem Header="meer afleveringen">
+                    <Grid Margin="19,0,19,0">
+                        <q:ListPlaceholder ListTarget="{Binding ElementName=EpisodesList}"
+                            LoadingPlaceholderContent="Afleveringen laden.."
+                            EmptyPlaceholderContent="Er zijn geen andere afleveringen gevonden" />
+                        <ListView x:Name="EpisodesList" Margin="0,0,0,0" ItemsSource="{Binding Episodes}" Background="Transparent" SelectionChanged="EpisodesListSelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,12" Height="85">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0" VerticalAlignment="Center" Width="80" Height="80">
+                                            <BitmapIcon Grid.Column="0" Grid.Row="0"
+                                                UriSource="/Resources/NPO.png" 
+                                                Foreground="{StaticResource IconColorBrush}"
+                                                Opacity="0.5"
+                                                Height="Auto"
+                                                Width="Auto"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Margin="15" />
+                                            <Image Grid.Column="0"
+                                               Grid.Row="0"
+                                               Stretch="UniformToFill"
+                                               Source="{Binding ImageStill}"
+                                               Height="Auto"
+                                               Width="Auto"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" />
+                                        </Grid>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Text="{Binding Series.Name}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="Wrap"
+                                               MaxHeight="80"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               LineHeight="28"
+                                               Margin="12,0,12,0"
+                                               FontSize="24" />
+                                            <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Opacity="0.7"
+                                               Text="{Binding DateTimeLength}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="NoWrap"
+                                               MaxHeight="30"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               FontSize="14"
+                                               Margin="12,0,12,0" />
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="CommandBar" Background="{StaticResource AppBarBackgroundThemeBrush}" Foreground="{StaticResource AppBarItemForegroundThemeBrush}">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="streamen" Icon="Play" Click="PlayButton" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

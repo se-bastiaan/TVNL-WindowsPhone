@@ -1,0 +1,104 @@
+﻿<Page
+    x:Class="WindowsPhone81TVNL.Views.SupportPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsPhone81TVNL.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource BackgroundColorBrush}">
+    <Page.Resources>
+        <Style x:Key="LikeButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="85" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Source="/Assets/Thumbs-Up.png" Grid.Row="0" Grid.Column="0" Margin="0,12,0,0" />
+                            <TextBlock Text="€ 0,99" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" TextAlignment="Center" Margin="0,12,0,12" FontSize="20" Foreground="{StaticResource AccentColorBrush}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FavoriteButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="Padding" Value="10,5,10,6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="85" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Source="/Assets/Star.png" Grid.Row="0" Grid.Column="0" Margin="0,12,0,0" />
+                            <TextBlock Text="€ 1,99" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" TextAlignment="Center" Margin="0,12,0,12" FontSize="20" Foreground="{StaticResource AccentColorBrush}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="LoveButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="Padding" Value="10,5,10,6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="85" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Source="/Assets/Heart.png" Grid.Row="0" Grid.Column="0" Margin="0,12,0,0" />
+                            <TextBlock Text="€ 2,99" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" TextAlignment="Center" Margin="0,12,0,12" FontSize="20" Foreground="{StaticResource AccentColorBrush}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Pivot>
+        <Pivot.Title>
+            <Image Source="/Assets/NPO-logo.png" 
+                        Height="35"
+                        Width="35"
+                        Margin="0,4,0,0" />
+        </Pivot.Title>
+
+        <PivotItem Header="over">
+            <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="24,0,24,0">
+                <TextBlock Text="Deze app kost niks en bevat geen advertenties. En dat hoort zo, we betalen niet voor niets belasting en daar willen wij als Windows Phone gebruikers natuurlijk ook optimaal van kunnen profiteren. Zelfs al komt het niet direct vanuit de NPO." TextWrapping="Wrap" Foreground="{StaticResource SecondColorBrush}" Style="{StaticResource BodyTextBlockStyle}" />
+                <TextBlock Margin="0,6,0,0" Text="Helaas kost het onderhouden van een applicatie veel tijd. Wil je mij hierin steunen? Dan kun je een bijdrage leveren door het doen van een in-app aankoop." TextWrapping="Wrap" Foreground="{StaticResource SecondColorBrush}" Style="{StaticResource BodyTextBlockStyle}" />
+                <TextBlock Margin="0,6,0,0" Text="Bedankt voor het gebruiken van deze app," TextWrapping="Wrap" Foreground="{StaticResource SecondColorBrush}" Style="{StaticResource BodyTextBlockStyle}" />
+                <TextBlock Margin="0,0,0,0" Text="Sébastiaan" TextWrapping="Wrap" Foreground="{StaticResource SecondColorBrush}" Style="{StaticResource BodyTextBlockStyle}" />
+                <Grid Margin="0,36,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button BorderBrush="Transparent" Background="Transparent" Foreground="Transparent" Grid.RowSpan="2" Grid.Column="0" Style="{StaticResource LikeButtonStyle}" Click="LikeButtonClick" />
+                    <Button BorderBrush="Transparent" Background="Transparent" Foreground="Transparent" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource FavoriteButtonStyle}" Click="FavoriteButtonClick" />
+                    <Button BorderBrush="Transparent" Background="Transparent" Foreground="Transparent" Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource LoveButtonStyle}" Click="LoveButtonClick" />
+
+                </Grid>
+            </StackPanel>
+        </PivotItem>
+    </Pivot>
+</Page>

@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="WindowsPhone81TVNL.Views.StreamPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsPhone81TVNL.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mmppf="using:Microsoft.PlayerFramework"
+    xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
+    xmlns:webvtt="using:Microsoft.PlayerFramework.WebVTT"
+    mc:Ignorable="d"
+    Foreground="{StaticResource SecondColorBrush}"
+    Background="{StaticResource BackgroundColorBrush}">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <ProgressRing x:Name="RingProgress"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Foreground="White" />
+        <mmppf:MediaPlayer x:Name="StreamPlayer" IsLive="True">
+            <mmppf:MediaPlayer.Plugins>
+                <adaptive:AdaptivePlugin />
+                <webvtt:WebVTTPlugin />
+            </mmppf:MediaPlayer.Plugins>
+        </mmppf:MediaPlayer>
+    </Grid>
+</Page>

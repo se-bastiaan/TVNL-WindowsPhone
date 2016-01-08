@@ -1,0 +1,292 @@
+﻿<Page
+    x:Class="WindowsPhone81TVNL.Views.MainPage"
+    x:Name="ThisMainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsPhone81TVNL"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:q="using:QKit"
+    xmlns:rma="using:RateMyApp.Controls"
+    mc:Ignorable="d"
+    Foreground="{StaticResource SecondColorBrush}"
+    Background="{StaticResource BackgroundColorBrush}">
+    <Pivot>
+        <Pivot.Title>
+            <Image Source="/Assets/NPO-logo.png" 
+                        Height="35"
+                        Width="35"
+                        Margin="0,4,0,0" />
+        </Pivot.Title>
+        
+        <PivotItem Header="uitgelicht">
+            <Grid Margin="19,0,19,0">
+                <q:ListPlaceholder ListTarget="{Binding ElementName=TipsList}"
+                       LoadingPlaceholderContent="Laden.."
+                       EmptyPlaceholderContent="Er zijn geen gegevens gevonden" />
+                <ListView x:Name="TipsList"
+                      ItemsSource="{Binding Tips}" SelectionChanged="MainPage_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,12" Height="85">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" VerticalAlignment="Center" Width="80" Height="80">
+                                    <BitmapIcon Grid.Column="0" Grid.Row="0"
+                                                UriSource="/Resources/NPO.png" 
+                                                Foreground="{StaticResource IconColorBrush}"
+                                                Opacity="0.5"
+                                                Height="Auto"
+                                                Width="Auto"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Margin="15" />
+                                    <Image Grid.Column="0"
+                                           Grid.Row="0"
+                                           Stretch="UniformToFill"
+                                           Source="{Binding Image}"
+                                           Height="Auto"
+                                           Width="Auto"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                </Grid>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Text="{Binding Name}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="Wrap"
+                                               MaxHeight="80"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               LineHeight="28"
+                                               Margin="12,0,12,0"
+                                               FontSize="24" />
+                                    <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Opacity="0.7"
+                                               Text="{Binding Episode.DateTimeLength}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="NoWrap"
+                                               MaxHeight="30"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               FontSize="16"
+                                               Margin="12,0,12,0" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </PivotItem>
+
+        <PivotItem Header="nieuw"
+                   Foreground="{StaticResource AccentColorBrush}">
+            <Grid Margin="19,0,19,0">
+                <q:ListPlaceholder ListTarget="{Binding ElementName=NewList}"
+                       LoadingPlaceholderContent="Laden.."
+                       EmptyPlaceholderContent="Er zijn geen gegevens gevonden" />
+                <ListView x:Name="NewList"
+                      ItemsSource="{Binding New}"
+                      SelectionChanged="MainPage_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,12" Height="85">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" VerticalAlignment="Center" Width="80" Height="80">
+                                    <BitmapIcon Grid.Column="0" Grid.Row="0"
+                                                UriSource="/Resources/NPO.png" 
+                                                Foreground="{StaticResource IconColorBrush}"
+                                                Opacity="0.5"
+                                                Height="Auto"
+                                                Width="Auto"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Margin="15" />
+                                    <Image Grid.Column="0"
+                                           Grid.Row="0"
+                                           Stretch="UniformToFill"
+                                           Source="{Binding Episode.ImageStill}"
+                                           Height="Auto"
+                                           Width="Auto"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                </Grid>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Text="{Binding Episode.Series.Name}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="Wrap"
+                                               MaxHeight="80"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               LineHeight="28"
+                                               Margin="12,0,12,0"
+                                               FontSize="24" />
+                                    <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Opacity="0.7"
+                                               Text="{Binding DateTimeLength}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="NoWrap"
+                                               MaxHeight="30"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               FontSize="16"
+                                               Margin="12,0,12,0" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </PivotItem>
+        
+        <PivotItem Header="populair"
+                   Foreground="{StaticResource AccentColorBrush}">
+            <Grid Margin="19,0,19,0">
+                <q:ListPlaceholder ListTarget="{Binding ElementName=NewList}"
+                       LoadingPlaceholderContent="Laden.."
+                       EmptyPlaceholderContent="Er zijn geen gegevens gevonden" />
+                <ListView x:Name="PopularList"
+                      ItemsSource="{Binding Popular}"
+                      SelectionChanged="MainPage_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,12" Height="85">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" VerticalAlignment="Center" Width="80" Height="80">
+                                    <BitmapIcon Grid.Column="0" Grid.Row="0"
+                                                UriSource="/Resources/NPO.png" 
+                                                Foreground="{StaticResource IconColorBrush}"
+                                                Opacity="0.5"
+                                                Height="Auto"
+                                                Width="Auto"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Margin="15" />
+                                    <Image Grid.Column="0"
+                                           Grid.Row="0"
+                                           Stretch="UniformToFill"
+                                           Source="{Binding ImageStill}"
+                                           Height="Auto"
+                                           Width="Auto"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                </Grid>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Text="{Binding Series.Name}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="Wrap"
+                                               MaxHeight="80"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               LineHeight="28"
+                                               Margin="12,0,12,0"
+                                               FontSize="24" />
+                                    <TextBlock Foreground="{StaticResource SecondColorBrush}"
+                                               Opacity="0.7"
+                                               Text="{Binding DateTimeLength}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               TextWrapping="NoWrap"
+                                               MaxHeight="30"
+                                               Style="{StaticResource ListViewItemTextBlockStyle}"
+                                               TextTrimming="WordEllipsis"
+                                               FontSize="16"
+                                               Margin="12,0,12,0" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </PivotItem>
+
+        <PivotItem Header="a-z"
+            Foreground="{StaticResource AccentColorBrush}">
+            <Grid Margin="19,0,19,0">
+                <q:ListPlaceholder ListTarget="{Binding ElementName=IndexList}"
+                       LoadingPlaceholderContent="Programma's laden.."
+                       EmptyPlaceholderContent="Er zijn geen programma's gevonden" />
+                <q:AlphaJumpList>
+                    <ListView x:Name="IndexList"
+                              Margin="0,-9.5,0,0"
+                              ItemsSource="{Binding Index}"
+                              SelectionChanged="MainPage_IndexListSelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"
+                                           Foreground="{StaticResource SecondColorBrush}"
+                                           Style="{ThemeResource ListViewItemTextBlockStyle}"
+                                           Margin="0,0,9,5"
+                                           TextWrapping="NoWrap"
+                                           TextTrimming="WordEllipsis" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </q:AlphaJumpList>
+            </Grid>
+        </PivotItem>
+
+        <PivotItem Header="live"
+                   Foreground="{StaticResource AccentColorBrush}">
+            <Grid Margin="19,0,19,0">
+                <GridView ItemsSource="{Binding Live}"
+                          SelectionChanged="MainPage_SelectionChanged">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="{Binding DataContext.TileSize, ElementName=ThisMainPage}" Width="{Binding DataContext.TileSize, ElementName=ThisMainPage}" Background="{StaticResource AccentColorBrush}" Margin="0,0,12,12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <AppBarButton Margin="0,0,-8,0" HorizontalAlignment="Right" Icon="{Binding Icon}" IsEnabled="False" />
+                                <Image Margin="0,-24,12,0" Source="{Binding Image}" Width="90" Height="90" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                <TextBlock Margin="12,0,0,8" Text="{Binding Name}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="White" FontSize="16" FontFamily="Segoe WP SemiLight" FontWeight="Bold" />
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </Grid>
+        </PivotItem>
+    </Pivot>
+
+    <Page.BottomAppBar>
+        <CommandBar Background="{StaticResource AppBarBackgroundThemeBrush}" Foreground="{StaticResource AppBarItemForegroundThemeBrush}">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="verversen" Click="RefreshClick" Icon="Sync" />
+                <AppBarButton Label="zoeken" Command="{Binding SearchCommand}" Icon="Find" />
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="over" Command="{Binding AboutCommand}" />
+                <AppBarButton Label="ondersteun de ontwikkelaar" Command="{Binding SupportCommand}" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <!--<rma:FeedbackOverlay x:Name="FeedbackOverlay"
+            FeedbackTo="tvnl@se-bastiaan.eu"
+            ApplicationName="{StaticResource AppName}"
+            CompanyName="Sébastiaan Versteeg"
+            RatingMessage1="{Binding LocalizedResources.RatingMessage1, Source={StaticResource LocalizedStrings}}"
+            RatingMessage2="{Binding LocalizedResources.RatingMessage2, Source={StaticResource LocalizedStrings}}"
+            RatingTitle="{Binding LocalizedResources.RatingTitle, Source={StaticResource LocalizedStrings}}"
+            RatingYes="{Binding LocalizedResources.RatingYes, Source={StaticResource LocalizedStrings}}"
+            RatingNo="{Binding LocalizedResources.RatingNo, Source={StaticResource LocalizedStrings}}"
+            FeedbackMessage1="{Binding LocalizedResources.FeedbackMessage1, Source={StaticResource LocalizedStrings}}"
+            FeedbackTitle="{Binding LocalizedResources.FeedbackTitle, Source={StaticResource LocalizedStrings}}"
+            FeedbackYes="{Binding LocalizedResources.FeedbackYes, Source={StaticResource LocalizedStrings}}"
+            FeedbackNo="{Binding LocalizedResources.FeedbackNo, Source={StaticResource LocalizedStrings}}"
+            FeedbackBody="{Binding LocalizedResources.FeedbackBody, Source={StaticResource LocalizedStrings}}"
+            />-->
+
+</Page>
